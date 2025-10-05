@@ -12,61 +12,66 @@
         /* Define a fonte Inter e cores padrão */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7f7f7;
+            /* Fundo muito claro, quase branco, para um visual limpo */
+            background-color: #f9fafb; 
         }
         .app-container {
             max-width: 600px;
             margin: 2rem auto;
-            padding: 1.5rem;
+            padding: 2.5rem; /* Aumenta o padding interno */
+        }
+        /* Transição mais sutil para um toque profissional */
+        button, a.block {
+            transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
     </style>
 </head>
 <body>
 
-    <div class="app-container bg-white shadow-2xl rounded-xl">
-        <header class="text-center mb-6">
-            <h1 class="text-3xl font-bold text-gray-800">Eri Fotos</h1>
-            <p class="text-indigo-600 text-lg">Simulador de Registro de Vendas e WhatsApp</p>
+    <div class="app-container bg-white shadow-2xl rounded-2xl border border-gray-100"> 
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight">Eri Fotos</h1>
+            <p class="text-gray-600 text-lg font-normal mt-1">Ferramenta de Registro e Análise de Vendas</p>
         </header>
 
         <!-- Formulário de Entrada de Dados -->
-        <form id="salesForm" class="space-y-4">
+        <form id="salesForm" class="space-y-6">
 
             <!-- Mensagem de Validação -->
-            <div id="validationMessage" class="hidden p-3 bg-red-100 text-red-700 rounded-md font-medium" role="alert">
+            <div id="validationMessage" class="hidden p-4 bg-red-100 text-red-800 rounded-lg font-bold shadow-md border border-red-200" role="alert">
                 Por favor, preencha o Nome e o Telefone (WhatsApp) corretamente.
             </div>
 
             <!-- Informações do Cliente -->
-            <h2 class="text-xl font-semibold text-gray-700 border-b pb-2 mb-4">Dados do Cliente</h2>
+            <h2 class="text-xl font-bold text-gray-700 border-b border-gray-200 pb-2 mb-4">Dados do Cliente</h2>
 
             <div>
                 <label for="clientName" class="block text-sm font-medium text-gray-700">Nome do Cliente</label>
-                <input type="text" id="clientName" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                <input type="text" id="clientName" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-600 focus:border-indigo-600">
             </div>
 
             <div>
-                <label for="clientEmail" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="email" id="clientEmail" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                <label for="clientEmail" class="block text-sm font-medium text-gray-700">Email (Opcional)</label>
+                <input type="email" id="clientEmail" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-600 focus:border-indigo-600">
             </div>
 
             <div>
                 <label for="clientPhone" class="block text-sm font-medium text-gray-700">Telefone (WhatsApp) - Ex: 5511987654321</label>
                 <!-- O input aceita apenas números para facilitar a geração do link wa.me -->
-                <input type="number" id="clientPhone" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Apenas números, inclua código do país e DDD">
+                <input type="number" id="clientPhone" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-600 focus:border-indigo-600" placeholder="Apenas números, inclua código do país e DDD">
             </div>
 
             <!-- Informações da Venda -->
-            <h2 class="text-xl font-semibold text-gray-700 border-b pb-2 mb-4 pt-4">Detalhes da Venda</h2>
+            <h2 class="text-xl font-bold text-gray-700 border-b border-gray-200 pb-2 mb-4 pt-4">Detalhes da Venda</h2>
 
             <div>
                 <label for="photoValue" class="block text-sm font-medium text-gray-700">Valor da Foto/Sessão (R$)</label>
-                <input type="number" step="0.01" id="photoValue" value="0.00" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                <input type="number" step="0.01" id="photoValue" value="0.00" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-600 focus:border-indigo-600">
             </div>
 
             <div>
                 <label for="toyValue" class="block text-sm font-medium text-gray-700">Venda de Brinquedo (Opcional)</label>
-                <select id="toyValue" class="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                <select id="toyValue" class="mt-1 block w-full px-4 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-600 focus:border-indigo-600">
                     <option value="0|Nenhuma Venda">Não</option>
                     <option value="10|Brinquedo R$ 10,00">R$ 10,00</option>
                     <option value="15|Brinquedo R$ 15,00">R$ 15,00</option>
@@ -75,42 +80,76 @@
             </div>
 
             <!-- Total e Ação -->
-            <div class="pt-6">
-                <div class="bg-indigo-50 p-4 rounded-lg shadow-inner flex justify-between items-center mb-6">
-                    <span class="text-xl font-medium text-gray-700">TOTAL DA VENDA:</span>
-                    <span id="totalDisplay" class="text-3xl font-bold text-indigo-700">R$ 0.00</span>
+            <div class="pt-8">
+                <!-- Caixa de total com cor forte e contraste alto -->
+                <div class="bg-indigo-700 text-white p-5 rounded-lg shadow-xl flex justify-between items-center mb-6">
+                    <span class="text-xl font-semibold">TOTAL DA VENDA:</span>
+                    <span id="totalDisplay" class="text-4xl font-extrabold">R$ 0,00</span>
                 </div>
 
-                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-lg text-lg font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-150 ease-in-out">
+                <button type="submit" class="w-full flex justify-center py-3 px-4 rounded-lg shadow-lg text-lg font-bold text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-green-300">
                     Concluir Venda e Gerar WhatsApp
                 </button>
             </div>
         </form>
 
         <!-- Área de Resultado (Link WhatsApp) -->
-        <div id="resultArea" class="hidden mt-8 p-6 bg-gray-100 border border-gray-300 rounded-lg">
-            <h3 class="text-xl font-semibold text-gray-700 mb-4">Link de WhatsApp Gerado!</h3>
-            <p class="mb-4 text-sm text-gray-600">O link foi gerado com a mensagem personalizada. Você pode enviá-lo para o cliente agora.</p>
+        <div id="resultArea" class="hidden mt-10 p-6 bg-green-50 border border-green-200 rounded-xl shadow-lg">
+            <h3 class="text-xl font-bold text-green-700 mb-4 flex items-center">
+                <!-- Ícone de Check/Sucesso -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-3">
+                    <path d="M22 13v-3a8 8 0 0 0-8-8 8 8 0 0 0-8 8v3"></path><path d="M14 2h6a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-6"></path><path d="M10 2h-6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h6"></path>
+                </svg>
+                Venda Registrada e Mensagem Pronta!
+            </h3>
+            <p class="mb-4 text-sm text-gray-700">O link foi gerado. Clique para abrir a conversa no WhatsApp.</p>
 
-            <a id="whatsappLink" target="_blank" class="block text-center py-3 px-4 border border-transparent rounded-md shadow-md text-base font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+            <a id="whatsappLink" target="_blank" class="block text-center py-3 px-4 rounded-lg shadow-xl text-base font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-blue-400">
                 Abrir WhatsApp para o Cliente
             </a>
             
-            <div class="mt-4">
-                 <p class="text-sm font-medium text-gray-600">Mensagem gerada (prévia):</p>
-                 <textarea id="messagePreview" rows="8" readonly class="w-full text-xs p-3 border border-gray-300 rounded-md mt-2 bg-white text-gray-800"></textarea>
+            <div class="mt-6">
+                 <p class="text-sm font-medium text-gray-700">Mensagem gerada (prévia):</p>
+                 <textarea id="messagePreview" rows="8" readonly class="w-full text-xs p-3 border border-gray-300 rounded-md mt-2 bg-white text-gray-800 shadow-inner"></textarea>
             </div>
         </div>
 
         ---
 
         <!-- Painel de Vendas (Gráfico) -->
-        <section class="mt-8 pt-4 border-t border-gray-300">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">Painel de Vendas (Últimos 7 Dias)</h2>
-            <div class="bg-white p-4 rounded-lg shadow-md">
+        <section class="mt-12 pt-6 border-t border-gray-200">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                 <!-- Ícone de Gráfico -->
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-indigo-700"><path d="M3 3v18h18"/><path d="M18.7 8l-5.7 5.7-2.3-2.3-7.2 7.2"/></svg>
+                Análise de Desempenho (7 Dias)
+            </h2>
+            <div class="bg-white p-5 rounded-xl shadow-2xl border border-gray-100">
                 <canvas id="salesChart"></canvas>
             </div>
-            <p class="text-xs text-gray-500 mt-2 text-center">Este gráfico atualiza automaticamente a cada nova venda registrada.</p>
+        </section>
+
+        <!-- Histórico de Vendas Recentes (Tabela) -->
+        <section class="mt-12 pt-6 border-t border-gray-200">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <!-- Ícone de Lista/Histórico -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-indigo-700"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                Últimas 5 Vendas Registradas
+            </h2>
+            <div class="bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-3 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider w-1/6">Data</th>
+                            <th scope="col" class="px-3 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider w-1/2">Cliente</th>
+                            <th scope="col" class="px-3 py-3 text-right text-xs font-bold text-gray-600 uppercase tracking-wider w-1/3">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="salesHistoryBody" class="bg-white divide-y divide-gray-200">
+                        <!-- Linhas da tabela serão inseridas aqui via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-gray-500 mt-3 text-center">Os dados são salvos localmente (no seu navegador) e atualizam em tempo real.</p>
         </section>
 
     </div>
@@ -128,6 +167,8 @@
         const messagePreview = document.getElementById('messagePreview');
         const validationMessage = document.getElementById('validationMessage');
         const chartCanvas = document.getElementById('salesChart');
+        const salesHistoryBody = document.getElementById('salesHistoryBody'); // Novo elemento
+
         
         // Constante para localStorage e Links
         const STORAGE_KEY = 'eriFotosSalesHistory';
@@ -149,6 +190,7 @@
 
             const total = photoValue + toyPrice;
             
+            // Formato brasileiro
             totalDisplay.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
             
             return total;
@@ -192,7 +234,7 @@
             return { url: whatsappUrl, text: messageText };
         }
         
-        // --- Funções de Armazenamento e Gráfico ---
+        // --- Funções de Armazenamento e Gráfico/Tabela ---
 
         /**
          * Carrega o histórico de vendas do localStorage.
@@ -204,7 +246,9 @@
                 // Garante que a data está em formato Date para fácil manipulação
                 return history.map(sale => ({
                     date: new Date(sale.date),
-                    total: sale.total
+                    total: sale.total,
+                    name: sale.name, // Novo campo
+                    item: sale.item  // Novo campo
                 }));
             } catch (error) {
                 console.error("Erro ao carregar histórico de vendas:", error);
@@ -214,20 +258,27 @@
 
         /**
          * Salva uma nova venda no histórico e atualiza o localStorage.
+         * Foi atualizada para receber o nome e item da venda.
          * @param {number} totalValue - Valor total da venda.
+         * @param {string} clientName - Nome do cliente.
+         * @param {string} toyDescription - Descrição do item (brinquedo).
          */
-        function saveSale(totalValue) {
+        function saveSale(totalValue, clientName, toyDescription) {
             const history = loadSalesHistory();
             const newSale = {
                 date: new Date().toISOString(), // Salva a data em formato ISO string
-                total: totalValue
+                total: totalValue,
+                name: clientName,
+                item: toyDescription 
             };
+            // Adiciona a nova venda
             history.push(newSale);
+            // Salva no localStorage
             localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
         }
 
         /**
-         * Agrupa o histórico de vendas por dia e totaliza.
+         * Agrupa o histórico de vendas por dia e totaliza (para o gráfico).
          * @param {Array<Object>} history - Lista de vendas.
          * @returns {Object} { labels: string[], data: number[] }
          */
@@ -247,9 +298,12 @@
 
             // Soma as vendas para cada dia dentro do período de 7 dias
             history.forEach(sale => {
-                const saleDateKey = sale.date.toISOString().substring(0, 10);
-                if (dailyTotals.hasOwnProperty(saleDateKey)) {
-                    dailyTotals[saleDateKey] += sale.total;
+                // Verifica se a venda tem um objeto Date válido antes de continuar
+                if (sale.date instanceof Date && !isNaN(sale.date)) {
+                    const saleDateKey = sale.date.toISOString().substring(0, 10);
+                    if (dailyTotals.hasOwnProperty(saleDateKey)) {
+                        dailyTotals[saleDateKey] += sale.total;
+                    }
                 }
             });
 
@@ -265,6 +319,46 @@
             const data = sortedKeys.map(key => dailyTotals[key]);
 
             return { labels, data };
+        }
+
+        /**
+         * Renderiza o histórico de vendas na tabela.
+         */
+        function renderSalesHistoryTable() {
+            const history = loadSalesHistory();
+            // Ordena pela data (mais recente primeiro)
+            const sortedHistory = history.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            // Limpa o conteúdo anterior
+            salesHistoryBody.innerHTML = '';
+            
+            // Exibe apenas as últimas 5 transações
+            const transactionsToDisplay = sortedHistory.slice(0, 5);
+
+            if (transactionsToDisplay.length === 0) {
+                salesHistoryBody.innerHTML = '<tr><td colspan="3" class="p-4 text-center text-sm text-gray-500 bg-white">Nenhuma venda registrada ainda.</td></tr>';
+                return;
+            }
+
+            transactionsToDisplay.forEach(sale => {
+                // Formata a data e o valor
+                const saleDate = new Date(sale.date);
+                const formattedDate = saleDate.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+                const formattedTotal = sale.total.toFixed(2).replace('.', ',');
+                
+                // Trunca o nome do cliente se for muito longo
+                const clientName = sale.name && sale.name.length > 25 ? sale.name.substring(0, 22) + '...' : sale.name;
+
+                const row = document.createElement('tr');
+                row.className = 'border-b hover:bg-gray-50';
+                
+                row.innerHTML = `
+                    <td class="p-3 text-sm text-gray-500">${formattedDate}</td>
+                    <td class="p-3 font-medium text-gray-800">${clientName || 'Cliente sem nome'}</td>
+                    <td class="p-3 text-sm font-semibold text-right text-indigo-700 whitespace-nowrap">R$ ${formattedTotal}</td>
+                `;
+                salesHistoryBody.appendChild(row);
+            });
         }
 
         /**
@@ -286,10 +380,11 @@
                     datasets: [{
                         label: 'Total Vendido (R$)',
                         data: data,
-                        backgroundColor: 'rgba(79, 70, 229, 0.7)', // Indigo
+                        // Cor do gráfico mais escura e profissional
+                        backgroundColor: 'rgba(79, 70, 229, 0.8)', // Indigo-600 com opacidade
                         borderColor: 'rgb(79, 70, 229)',
                         borderWidth: 1,
-                        borderRadius: 5,
+                        borderRadius: 4,
                     }]
                 },
                 options: {
@@ -299,12 +394,25 @@
                             beginAtZero: true,
                             title: {
                                 display: true,
-                                text: 'Valor (R$)'
+                                text: 'Valor (R$)',
+                                color: '#4b5563' // gray-600
                             },
                             ticks: {
+                                color: '#4b5563', // gray-600
                                 callback: function(value) {
                                     return 'R$ ' + value.toFixed(2).replace('.', ',');
                                 }
+                            },
+                            grid: {
+                                color: '#f3f4f6' // very light gray grid lines
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#4b5563'
+                            },
+                            grid: {
+                                display: false
                             }
                         }
                     },
@@ -350,12 +458,15 @@
                 return;
             }
 
-            // 2. Calcula o valor final
+            // 2. Calcula o valor final e pega informações do cliente
             const total = calculateTotal();
+            const clientName = clientNameInput.value.trim();
+            const toyDescription = toyValueSelect.options[toyValueSelect.selectedIndex].text;
 
-            // 3. Salva a venda e atualiza o gráfico
-            saveSale(total);
+            // 3. Salva a venda e atualiza os painéis
+            saveSale(total, clientName, toyDescription);
             renderSalesChart();
+            renderSalesHistoryTable(); // Atualiza a tabela
             
             // 4. Gera a URL e o texto da mensagem
             const { url, text } = generateWhatsAppLink(total);
@@ -363,7 +474,7 @@
             // 5. Atualiza a área de resultado no HTML
             whatsappLink.href = url;
             messagePreview.value = text;
-            whatsappLink.textContent = `Abrir WhatsApp para ${clientNameInput.value.trim()}`;
+            whatsappLink.textContent = `Abrir WhatsApp para ${clientName}`;
             
             // 6. Exibe a área de resultado e rola para ela
             resultArea.classList.remove('hidden');
@@ -371,17 +482,17 @@
 
             // 7. Limpa o formulário (opcional, mas recomendado para nova venda)
             salesForm.reset();
-            calculateTotal(); // Recalcula o total para R$ 0.00
+            calculateTotal(); // Recalcula o total para R$ 0,00
             
-            console.log('--- Venda Registrada e Gráfico Atualizado ---');
+            console.log('--- Venda Registrada e Painéis Atualizados ---');
         });
 
-        // Inicializa o cálculo do total e o gráfico na abertura
+        // Inicializa o cálculo do total, o gráfico e a tabela na abertura
         calculateTotal();
         renderSalesChart();
+        renderSalesHistoryTable();
 
     </script>
 
 </body>
 </html>
-
